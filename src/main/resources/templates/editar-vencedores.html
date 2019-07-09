@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Editar</title>
+
+	<!-- CSS -->
+	<style>
+		.container {max-width: 960px;}
+		.lh-condensed { line-height: 1.25; }
+		body{
+			padding-top: 3.5rem;
+			background-image: url(https://i.imgur.com/BfPGZkW.png);
+			background-size: cover;
+		}
+	</style>
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+	<div class="container">
+		<div class="py-5 text-center">
+			<h1>Formulário de Vencedores</h1>
+		</div>
+		<div class="col-md-12 order-md-2">
+			<h4 class="mb-3">Editar vencedores</h4>
+			<form class="needs-validation" novalidate th:object="${vencedor}" th:action="@{/cadastrar}" method="post">
+				<div class="row">
+				<div class="col-md-8 mb-3">
+					<input th:type= "hidden" th:field=" *{id}">
+					<p> Laureado: <input class="form-control" placeholder="ex.: Nádia Murad" type="text" th:field="*{laureado}"></p>
+					<p th:errors="*{laureado}"></p>
+					<p> Prêmio: <select class="form-control"  th:field="*{premio}">
+						<option th:each="umPremio : ${todosPremio}" th:text="${umPremio}"
+							th:value="${umPremio}">Prêmio</option>
+						</select></p>
+					<p th:errors="*{premio}"></p>
+					<p>Ano do Prêmio: <input class="form-control" placeholder="ex.: 2018" type="number" th:field="*{ano}"></p>
+					<p th:errors="*{ano}"></p>
+					<p>País: <input class="form-control" placeholder="ex.: Murad Ismail" type="text" th:field="*{pais}"></p>
+					<p th:errors="*{pais}"></p>
+					<p>Descrição: <input class="form-control" placeholder="ex.: Embaixadora da Boa Vontade para a Dignidade dos Sobreviventes de Tráfico Humano das Nações Unidas" type="text" th:field="*{descricao}"></p>
+					<p th:errors="*{descricao}"></p>
+				
+					
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Atualizar</button>
+					<!-- <button type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/novo}">Voltar</button>  -->
+					
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+		
+		
